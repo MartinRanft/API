@@ -5,22 +5,23 @@ if (!empty($fileName)) {
     $csv_helper->loadStudent($fileName);
 }
 
-class Student
+class schueler
 {
-    public $id;
-    public $firstName;
-    public $secondName;
-    public $lastName;
-    public $street = "";
-    public $postcode = "";
-    public $studentClass;
-    public $company;
-    public $field;
-    public $passed = false;
-    public $gone = false;
-    public $trainer = [];
-    public $birthday;
-    public $group;
+    public $schueler_id;
+    public $schueler_vorame;
+    public $schueler_nachname;
+    public $schuler_strasse;
+    public $schuler_betrieb;
+    public $schueler_bestanden = false;
+    public $schueler_abgang;
+    public $schueler_ausbilder[];
+    public $schuler_gdatum;
+    public $plz;
+    public $richtung;
+    public $klasse;
+    public $schueler_betriebsmail;
+    public $schueler_privatmail;
+    public &schueler_gruppe;
     
     /*
     public function __construct($firstName, $secondName, $lastName, $studentClass, $company, $field, $trainer, $birthday, $group)
@@ -38,37 +39,38 @@ class Student
     */
 }
 
-class Trainer
+class ausbilder
 {
-    public $id;
-    public $name;
-    public $phone;
-    public $email;
+    public $ausbilder_id;
+    public $ausbilder_name;
+    public $ausbilder_telefone;
+    public $ausbilder_email;
+    public $betrieb;
 }
 
-class Company
+class betrieb
 {
-    public $id;
+    public $betrieb_id;
     public $name;
     public $street;
     public $phone;
     public $city;
 }
 
-class StudentClass {
+class klasse {
     public $id;
     public $name;
     public $year;
 }
 
-class City
+class plz
 {
     public $id;
     public $city;
     public $postcode;
 }
 
-class Field
+class richtung
 {
     public $id;
     public $name;
@@ -91,15 +93,19 @@ class CSVHelper
                         switch($num){
                             case 0:
                                 echo "Nachname: " . $value;
+                                $student->lastName = $value;
                                 break;
                             case 1:
                                 echo ", Vorname: " . $value;
+                                $student->firstName = $value;
                                 break;
                             case 2:
                                 echo ", Gruppe: " . $value;
+                                $student->group = $value;
                                 break;
                             case 3:
                                 echo ", Lehrjahr: " . $value;
+                                $student->lastName = $value;
                                 break;
                             case 4:
                                 echo ", E-Mail: " . $value;
