@@ -46,7 +46,10 @@ $router->map('GET', '/test', function (ServerRequestInterface $request) : array 
     
 
     
-    return 
+    return [
+        'title'   => $testdata,
+        'version' => 1,
+    ];
 });
 
 
