@@ -33,7 +33,7 @@ jobs:
         username: hws
         port: 2222
         password: ${{ secrets.PASSWORD }}
-        script: echo ${{ secrets.PASSWORD }} | sudo su && cd /home/hws/ && mv -R -f ./deployment/* /var/lib/docker/volumes/www/_data
+        script: echo ${{ secrets.PASSWORD }} | sudo -S su && sudo su && cd /home/hws/ && mv -R -f ./deployment/* /var/lib/docker/volumes/www/_data
     
     # https://github.com/appleboy/ssh-action
     - name: executing remote ssh commands using password
