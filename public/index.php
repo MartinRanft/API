@@ -5,7 +5,7 @@ echo __DIR__;
 require __DIR__ . '/../vendor/autoload.php';
 require_once( __DIR__ .  "/../DB.php");
 
-$db = new DB("95.217.163.190:6603", "hws", "hws", "DV8tnYKJTvcCm5QS");
+
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -23,7 +23,7 @@ $router   = (new League\Route\Router)->setStrategy($strategy);
 
 // map a route
 $router->map('GET', '/', function (ServerRequestInterface $request) : array {
-    
+    $db = new DB("95.217.163.190:6603", "hws", "hws", "DV8tnYKJTvcCm5QS");
     $testdata = $db->query('SELECT name FROM test');
 
     return $testdata;
