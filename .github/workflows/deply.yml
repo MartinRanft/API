@@ -35,15 +35,6 @@ jobs:
         port: 2222
         script: |
           cd /home/hws/
+          rm -rf /var/lib/docker/volumes/www/_data/*
           mv -f ./deployment/* /var/lib/docker/volumes/www/_data
-    
-    # https://github.com/appleboy/ssh-action
-    - name: executing remote ssh commands using password
-      uses: appleboy/ssh-action@master
-      with:
-        host: 95.217.163.190
-        username: root
-        key: ${{ secrets.SSH_KEY }}
-        port: 2222
-        script: docker run --rm --volume www:/app composer install
-
+          docker run --rm --volume www:/app composer install
