@@ -18,10 +18,7 @@ $responseFactory = new \Laminas\Diactoros\ResponseFactory();
 $container = new League\Container\Container;
 
 $container->add('DB', DB::class)
-    ->addArguments("95.217.163.190:6603")
-    ->addArguments("hws")
-    ->addArguments("hws")
-    ->addArguments("DV8tnYKJTvcCm5QS");
+    ->addArguments(["95.217.163.190:6603", "hws", "hws", "DV8tnYKJTvcCm5QS"]);
 
 $strategy = new League\Route\Strategy\JsonStrategy($responseFactory);
 $router   = (new League\Route\Router)->setStrategy($strategy);
