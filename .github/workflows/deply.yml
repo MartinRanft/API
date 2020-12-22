@@ -30,9 +30,9 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: 95.217.163.190
-        username: hws
+        username: root
+        key: ${{ secrets.SSH_KEY }}
         port: 2222
-        password: ${{ secrets.PASSWORD }}
         script: |
           cd /home/hws/
           echo ${{ secrets.PASSWORD }} | sudo -S su -c mv -f ./deployment/* /var/lib/docker/volumes/www/_data
@@ -42,8 +42,8 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: 95.217.163.190
-        username: hws
+        username: root
+        key: ${{ secrets.SSH_KEY }}
         port: 2222
-        password: ${{ secrets.PASSWORD }}
         script: docker run --rm --volume www:/app composer install
 
