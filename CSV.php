@@ -21,7 +21,7 @@ class schueler
     public $klasse_id;
     public $schueler_betriebsmail;
     public $schueler_privatmail;
-    public &schueler_gruppe;
+    public $schueler_gruppe;
     
     /*
     public function __construct($firstName, $secondName, $lastName, $studentClass, $company, $field, $trainer, $birthday, $group)
