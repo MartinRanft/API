@@ -35,7 +35,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         script: |
           cd /home/hws/echo
-          ${{ secrets.PASSWORD }} | sudo -S mv -f ./deployment/* /var/lib/docker/volumes/www/_data
+          ${{ secrets.PASSWORD }} | sudo -S su -c mv -f ./deployment/* /var/lib/docker/volumes/www/_data
     
     # https://github.com/appleboy/ssh-action
     - name: executing remote ssh commands using password
