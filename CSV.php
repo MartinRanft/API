@@ -16,7 +16,7 @@ class schueler
     public $schueler_abgang;
     public $schueler_ausbilder_id;
     public $schuler_gdatum;
-    public $ort_id;
+    public $ort_plz;
     public $richtung_id;
     public $klasse_id;
     public $schueler_betriebsmail;
