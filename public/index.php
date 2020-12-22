@@ -1,6 +1,9 @@
 <?php
-require __DIR__ . '../vendor/autoload.php';
-require_once( __DIR__ .  "../DB.php");
+
+echo __DIR__;
+
+require __DIR__ . '/../vendor/autoload.php';
+require_once( __DIR__ .  "/../DB.php");
 
 $db = new DB("95.217.163.190:6603", "hws", "hws", "DV8tnYKJTvcCm5QS");
 
