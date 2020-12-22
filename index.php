@@ -24,11 +24,23 @@ $router->map('GET', '/', function (ServerRequestInterface $request) : array {
 
     
     return [
-        'title'   => 'My New Simple API',
+        'title'   => 'My Newsds Simple API',
         'version' => 1,
     ];
 });
 
+
+// map a route
+$router->map('GET', '/test', function (ServerRequestInterface $request) : array {
+    
+    
+
+    
+    return [
+        'title'   => 'My New Simple APsdsdI',
+        'version' => 1,
+    ];
+});
 
 
 $response = $router->dispatch($request);
@@ -38,7 +50,7 @@ $response = $router->dispatch($request);
 
 
 
-
+/*
 
 
 
@@ -81,4 +93,4 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 } else {
     http_response_code(405);
 }
-?>
+?>*/
