@@ -16,6 +16,12 @@ $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
 
 $responseFactory = new \Laminas\Diactoros\ResponseFactory();
 
+
+$container = new League\Container\Container; 
+$container->add(Acme\SomeController::class)->addArgument(Acme\TemplateRenderer::class); 
+$container->add(Acme\TemplateRenderer::class);
+$container->add(DB("95.217.163.190:6603", "hws", "hws", "DV8tnYKJTvcCm5QS"));
+
 $strategy = new League\Route\Strategy\JsonStrategy($responseFactory);
 $router   = (new League\Route\Router)->setStrategy($strategy);
 
@@ -24,9 +30,13 @@ $router   = (new League\Route\Router)->setStrategy($strategy);
 // map a route
 $router->map('GET', '/', function (ServerRequestInterface $request) : array {
     $db = new DB("95.217.163.190:6603", "hws", "hws", "DV8tnYKJTvcCm5QS");
+    
     $testdata = $db->query('SELECT name FROM test');
 
-    return $testdata;
+    return [
+        'title'   => $testdata,
+        'version' => 1,
+    ];
 });
 
 
@@ -36,10 +46,7 @@ $router->map('GET', '/test', function (ServerRequestInterface $request) : array 
     
 
     
-    return [
-        'title'   => 'My New Simple APsdsdI',
-        'version' => 1,
-    ];
+    return 
 });
 
 
