@@ -1,11 +1,10 @@
 <?php
+define('ROOT', __DIR__.'/../');
 
-echo __DIR__;
+require_once(ROOT.'vendor/autoload.php');
+require_once(ROOT.'DB.php');
 
-require __DIR__ . '/../vendor/autoload.php';
-require_once( __DIR__ .  "/../DB.php");
-
-
+require_once(ROOT.'controller/test.php');
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -17,41 +16,22 @@ $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
 $responseFactory = new \Laminas\Diactoros\ResponseFactory();
 
 
-$container = new League\Container\Container; 
-$container->add(Acme\SomeController::class)->addArgument(Acme\TemplateRenderer::class); 
-$container->add(Acme\TemplateRenderer::class);
-$container->add(DB("95.217.163.190:6603", "hws", "hws", "DV8tnYKJTvcCm5QS"));
+$container = new League\Container\Container;
+$container->add('DB', new DB("95.217.163.190:6603", "hws", "hws", "DV8tnYKJTvcCm5QS"));
 
 $strategy = new League\Route\Strategy\JsonStrategy($responseFactory);
 $router   = (new League\Route\Router)->setStrategy($strategy);
 
-
-
 // map a route
-$router->map('GET', '/', function (ServerRequestInterface $request) : array {
-    $db = new DB("95.217.163.190:6603", "hws", "hws", "DV8tnYKJTvcCm5QS");
-    
-    $testdata = $db->query('SELECT name FROM test');
-
-    return [
-        'title'   => $testdata,
-        'version' => 1,
-    ];
-});
-
+$router->map('GET', '/', HWS\Controller\TestController::class);
 
 // map a route
 $router->map('GET', '/test', function (ServerRequestInterface $request) : array {
-    
-    
-
-    
     return [
         'title'   => $testdata,
         'version' => 1,
     ];
 });
-
 
 $response = $router->dispatch($request);
 
@@ -61,9 +41,6 @@ $response = $router->dispatch($request);
 
 
 /*
-
-
-
 $database = new Database();
 
 $db = $database->getConnection();
