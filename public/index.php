@@ -24,7 +24,7 @@ $strategy = new League\Route\Strategy\JsonStrategy($responseFactory);
 $router   = (new League\Route\Router)->setStrategy($strategy);
 
 // map a route
-$router->map('GET', '/', HWS\Controller\TestController::class);
+$router->map('GET', '/', new HWS\Controller\TestController);
 
 // map a route
 $router->map('GET', '/test', function (ServerRequestInterface $request) : array {
