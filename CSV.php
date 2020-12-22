@@ -14,11 +14,11 @@ class schueler
     public $schuler_betrieb;
     public $schueler_bestanden = false;
     public $schueler_abgang;
-    public $schueler_ausbilder[];
+    public $schueler_ausbilder_id;
     public $schuler_gdatum;
-    public $plz;
-    public $richtung;
-    public $klasse;
+    public $ort_id;
+    public $richtung_id;
+    public $klasse_id;
     public $schueler_betriebsmail;
     public $schueler_privatmail;
     public &schueler_gruppe;
@@ -63,11 +63,10 @@ class klasse {
     public $year;
 }
 
-class plz
+class ort
 {
-    public $id;
-    public $city;
-    public $postcode;
+    public $plz;
+    public $ort_name;
 }
 
 class richtung
