@@ -1,7 +1,8 @@
 <?php
 require '../vendor/autoload.php';
-//include_once '../config/database.php';
+require_once("../DB.php");
 
+$db = new DB("95.217.163.190:6603", "hws", "hws", "DV8tnYKJTvcCm5QS");
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -20,13 +21,9 @@ $router   = (new League\Route\Router)->setStrategy($strategy);
 // map a route
 $router->map('GET', '/', function (ServerRequestInterface $request) : array {
     
-    
+    $testdata = $db->query('SELECT name FROM test');
 
-    
-    return [
-        'title'   => 'My Newsds Simple API',
-        'version' => 1,
-    ];
+    return $testdata;
 });
 
 
